@@ -1,0 +1,10 @@
+sim/top.sv
+src/mac.sv
+src/input_register.sv
+src/booths_encoding.sv
+src/wallace_tree_red.sv
+src/wallace_stage.sv
+src/wallace_pkg.sv
+src/full_adder.sv
+src/final_sum.sv
+src/accumulate.sv

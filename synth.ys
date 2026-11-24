@@ -1,0 +1,32 @@
+# Load slang SystemVerilog plugin
+    plugin -i slang
+    
+    # Read all design sources in dependency order
+    read_slang --top mac \
+        src/wallace_pkg.sv \
+        src/half_adder.sv \
+        src/full_adder.sv \
+        src/wallace_stage.sv \
+        src/wallace_tree_red.sv \
+        src/booths_encoding.sv \
+        src/input_register.sv \
+        src/final_sum.sv \
+        src/accumulate.sv \
+        src/mac.sv
+    
+    # Elaborate top module
+    hierarchy -check -top mac
+    
+    # Generic synthesis
+    synth -top mac
+    
+    # Technology mapping to target standard cell library
+    dfflibmap -liberty /home/ganesh/eda/opensta/test/nangate45/Nangate45_typ.lib
+    abc -liberty /home/ganesh/eda/opensta/test/nangate45/Nangate45_typ.lib
+    
+    # Clean and report cell count
+    clean
+    stat -liberty /home/ganesh/eda/opensta/test/nangate45/Nangate45_typ.lib
+    
+    # Write gate-level netlist for OpenSTA
+    write_verilog -noattr mac_synth.v

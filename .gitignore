@@ -1,0 +1,18 @@
+# Simulation & Waveforms
+*.vcd
+*.gtkw
+
+# Build outputs & Verilator objects
+bin/
+obj_dir/
+*.o
+*.out
+*.exe
+
+# LaTeX temporary files
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
